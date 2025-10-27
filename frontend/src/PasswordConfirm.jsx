@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 export default function PasswordConfirm() {
   const [pwd, setPwd] = useState('');
   const [confirm, setConfirm] = useState('');
-  const [showPwd, setShowPwd] = useState(false);
-  const [showConfirm, setShowConfirm] = useState(false);
+  const [showPwd, setShowPwd] = useState(false);//show passwd or not
+  const [showConfirm, setShowConfirm] = useState(false);//passwd ok or not
 
   const valid = {
     length: pwd.length >= 8,
@@ -14,8 +14,8 @@ export default function PasswordConfirm() {
   };
 
   // Password is only "OK" if ALL criteria are met
-  const isPasswordOK = valid.length && valid.uppercase && valid.number && valid.special;
-  const match = pwd === confirm && confirm.length > 0;
+  const isPasswordOK = valid.length && valid.uppercase && valid.number && valid.special;//checking for condition
+  const match = pwd === confirm && confirm.length > 0;//checking if matched
 
   // Dynamic feedback messages for missing criteria
   const feedbackMessages = [
@@ -23,13 +23,13 @@ export default function PasswordConfirm() {
     !valid.uppercase && pwd.length > 0 && 'Capital missing',
     !valid.number && pwd.length > 0 && 'Number missing',
     !valid.special && pwd.length > 0 && 'Special char missing',
-  ].filter(Boolean);
+  ].filter(Boolean);//removes all false values, leaving only the messages to display.
 
   return (
     <div>
       <div>
         <input
-          type={showPwd ? 'text' : 'password'}
+          type={showPwd ? 'text' : 'password'}//changes between "password" (hidden) and "text" (visible) based on showPwd.
           placeholder="Password"
           value={pwd}
           onChange={(e) => setPwd(e.target.value)}
@@ -73,7 +73,7 @@ export default function PasswordConfirm() {
             <span style={{ color: 'red' }}>❌ {message}</span>
           </div>
         ))}
-        {pwd.length > 0 && feedbackMessages.length === 0 && (
+        {pwd.length > 0 && feedbackMessages.length === 0 && (   //condition && <JSX /> }
           <span style={{ color: 'green' }}>✅ All requirements met</span>
         )}
       </div>

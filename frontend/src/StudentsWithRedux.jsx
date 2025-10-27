@@ -5,9 +5,9 @@ import store from './store';
 import { sortAsc, sortDesc } from './studentsSlice';
 
 function StudentsView() {
-  const students = useSelector(state => state.students);
-  const dispatch = useDispatch();
-
+  const students = useSelector(state => state.students);//useSelector reads data from the Redux store
+  const dispatch = useDispatch();//dispatch sends an action to the reducer.Reducer processes the action and returns new state, which automatically updates the component.
+  //current state and dispatch fn automatically passed to recducer  by store
   return (
     <div>
       <h3>Students List</h3>

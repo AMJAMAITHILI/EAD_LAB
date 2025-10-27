@@ -76,8 +76,13 @@ app.post('/products', (req, res) => {
 app.get('/info', (req, res) => res.json({ message: 'Server Information Route Accessed' }));
 
 // /status route
-app.get('/status', (req, res) => res.json({ status: 'OK', timestamp: new Date().toISOString() }));
-
+app.get('/status', (req, res) => {
+  res.status(200).json({
+    statusCode: 200,          
+    status: 'OK',
+    timestamp: new Date().toISOString()
+  });
+});
 //for undefined routes->
 // catch-all MUST be last
 app.use((req, res) => res.status(404).json({ error: 'Route not found', path: req.originalUrl }));

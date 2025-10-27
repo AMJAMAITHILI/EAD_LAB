@@ -10,10 +10,10 @@ db.books.insertMany([
   { title: 'The Martian', author: 'Andy Weir', category: 'Science Fiction', availableCopies: 3 },
   { title: 'Clean Architecture', author: 'Robert C. Martin', category: 'Programming', availableCopies: 4 },
   { title: 'The Hobbit', author: 'J.R.R. Tolkien', category: 'Fantasy', availableCopies: 2 },
-])
+])//js obj
 
 // 3️⃣ Retrieve all books in the "Science Fiction" category
-db.books.find({ category: 'Science Fiction' }).pretty()
+db.books.find({ category: 'Science Fiction' }).pretty()//returns json
 
 // 4️⃣ Decrease the availableCopies by 1 for a book when purchased (example: 'Dune')
 db.books.updateOne(

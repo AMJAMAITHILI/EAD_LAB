@@ -28,13 +28,8 @@ export default function PasswordInput() {
         value={pwd}
         onChange={(e) => setPwd(e.target.value)}
         style={{
-          display: 'block',
-          width: '30%',
-          padding: '10px',
           border: `2px solid ${borderColor}`,
-          borderRadius: 6,
-          outline: 'none',
-          fontSize: 15,
+          outline: 'none'
         }}
       />
 

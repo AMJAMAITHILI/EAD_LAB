@@ -51,7 +51,7 @@ export default function ProductApp() {
         />
         <button type="submit">Get Product</button>
       </form>
-      {product && (
+      {product && ( //setproduct updates product in handleGet 
         <div>
           <p>ID: {product.id}</p>
           <p>Name: {product.name}</p>
@@ -65,7 +65,8 @@ export default function ProductApp() {
         <input
           placeholder="ID"
           value={newProduct.id}
-          onChange={(e) => setNewProduct({ ...newProduct, id: e.target.value })}
+          onChange={(e) => setNewProduct({ ...newProduct, id: e.target.value })}//setNewProduct updates newProduct state andreturns to  handleAdd
+          //Copies all key-value pairs from the existing newProduct object using the spread operator (...newProduct) and then overrides the id property with the new value from the input field.
         />
         <input
           placeholder="Name"
