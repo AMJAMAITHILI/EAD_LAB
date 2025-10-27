@@ -1,0 +1,38 @@
+// -------------------------------
+// CollegeDB Students Operations
+// -------------------------------
+
+// 1️⃣ Use/Create Database
+use CollegeDB
+
+// 2️⃣ Create Collection
+db.createCollection("Students")
+
+// 3️⃣ Insert 5 Student Records
+db.Students.insertMany([
+  { name: "Alice", rollNumber: 101, marks: 85, department: "CS" },
+  { name: "Bob", rollNumber: 102, marks: 72, department: "ECE" },
+  { name: "Charlie", rollNumber: 103, marks: 95, department: "ME" },
+  { name: "David", rollNumber: 104, marks: 38, department: "CS" },
+  { name: "Eve", rollNumber: 105, marks: 60, department: "ECE" }
+])
+
+// 4️⃣ Retrieve All Students Sorted by Marks Descending
+print("All students sorted by marks (desc):")
+db.Students.find().sort({ marks: -1 }).forEach(doc => printjson(doc))
+
+// 5️⃣ Update Marks of a Student by Roll Number
+// Example: Update Bob's marks (rollNumber 102) to 80
+db.Students.updateOne(
+  { rollNumber: 102 },
+  { $set: { marks: 80 } }
+)
+print("Updated Bob's marks to 80")
+
+// 6️⃣ Delete Students with Marks Below 40
+db.Students.deleteMany({ marks: { $lt: 40 } })
+print("Deleted students with marks below 40")
+
+// 7️⃣ Display All Remaining Student Records
+print("Remaining students:")
+db.Students.find().forEach(doc => printjson(doc))

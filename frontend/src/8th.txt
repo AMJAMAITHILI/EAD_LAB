@@ -1,0 +1,26 @@
+use BookDB
+
+
+db.BookInventory.insertMany([
+{ title: 'Dune', author: 'Frank Herbert', category: 'Science Fiction', availableCopies: 5, price: 400 },
+{ title: 'Neuromancer', author: 'William Gibson', category: 'Science Fiction', availableCopies: 2, price: 300 },
+{ title: 'Clean Code', author: 'Robert C. Martin', category: 'Programming', availableCopies: 3, price: 500 },
+{ title: 'Eloquent JS', author: 'Marijn Haverbeke', category: 'Programming', availableCopies: 4, price: 450 },
+{ title: 'The Hobbit', author: 'J.R.R. Tolkien', category: 'Fantasy', availableCopies: 6, price: 350 },
+])
+
+
+// 1) Total books per category
+db.BookInventory.aggregate([
+{ $group: { _id: '$category', totalCopies: { $sum: '$availableCopies' } } }
+])
+
+
+// 2) Average price per category
+db.BookInventory.aggregate([
+{ $group: { _id: '$category', avgPrice: { $avg: '$price' } } }
+])
+
+
+// 3) Books in a category sorted by price desc (e.g., 'Programming')
+db.BookInventory.find({ category: 'Programming' }).sort({ price: -1 }).toArray()

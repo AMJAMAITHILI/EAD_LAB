@@ -1,0 +1,28 @@
+// 1️⃣ Use a database
+use BookInventoryDB
+
+// 2️⃣ Insert at least 7 books with varying categories and stock levels
+db.books.insertMany([
+  { title: 'Dune', author: 'Frank Herbert', category: 'Science Fiction', availableCopies: 5 },
+  { title: 'Foundation', author: 'Isaac Asimov', category: 'Science Fiction', availableCopies: 2 },
+  { title: '1984', author: 'George Orwell', category: 'Dystopia', availableCopies: 1 },
+  { title: 'Brave New World', author: 'Aldous Huxley', category: 'Dystopia', availableCopies: 0 },
+  { title: 'The Martian', author: 'Andy Weir', category: 'Science Fiction', availableCopies: 3 },
+  { title: 'Clean Architecture', author: 'Robert C. Martin', category: 'Programming', availableCopies: 4 },
+  { title: 'The Hobbit', author: 'J.R.R. Tolkien', category: 'Fantasy', availableCopies: 2 },
+])
+
+// 3️⃣ Retrieve all books in the "Science Fiction" category
+db.books.find({ category: 'Science Fiction' }).pretty()
+
+// 4️⃣ Decrease the availableCopies by 1 for a book when purchased (example: 'Dune')
+db.books.updateOne(
+  { title: 'Dune', availableCopies: { $gt: 0 } },
+  { $inc: { availableCopies: -1 } }
+)
+
+// 5️⃣ Delete all books that are out of stock (availableCopies = 0)
+db.books.deleteMany({ availableCopies: 0 })
+
+// 6️⃣ Display remaining books to verify
+db.books.find().pretty()
