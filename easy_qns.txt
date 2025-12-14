@@ -1,0 +1,99 @@
+const result = new Promise((resolve, reject) => {
+  let marks = 75;
+
+  if (marks >= 40)
+    resolve("Pass");
+  else
+    reject("Fail");
+});
+
+result
+  .then(msg => console.log(msg))
+  .catch(err => console.log(err));
+====
+let students = [
+  { name: "Ammu", marks: 85 },
+  { name: "Ravi", marks: 72 },
+  { name: "Sita", marks: 90 }
+];
+
+// Ascending
+students.sort((a, b) => a.marks - b.marks);
+console.log("Ascending:", students);
+
+// Descending
+students.sort((a, b) => b.marks - a.marks);
+console.log("Descending:", students);
+let arr=[5,2,9,1];
+console.log(arr.sort((a,b)=>a-b));
+console.log(arr.sort((a,b)=>b-a));
+===
+[
+  { "name": "Ammu" },
+  { "name": "Ravi" },
+  { "name": "Sita" }
+]
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>User Names</h3>
+
+<script>
+<script>
+fetch("./users.json")
+  .then(res => res.json())
+  .then(data => data.forEach(u => console.log(u.name)));
+</script>
+</script>
+
+</body>
+</html>
+cd fetch-demo
+python -m http.server
+open-http://localhost:8000
+===<script>
+function validate(){
+  let errors = "";
+
+  let email=/^\S+@\S+\.\S+$/;
+  let phone=/^[0-9]{10}$/;
+  let rollRegex=/^160123737(14[1-9]|1[5-9][0-9]|20[0-5])$/;
+
+  let emailVal = document.getElementById("email").value;
+  let phoneVal = document.getElementById("phone").value;
+  let rollVal = document.getElementById("roll").value;
+
+  if(!email.test(emailVal))
+    errors += "❌ Invalid Email\n";
+
+  if(!phone.test(phoneVal))
+    errors += "❌ Phone must be 10 digits\n";
+
+  if(!rollRegex.test(rollVal))
+    errors += "❌ Invalid Roll Number\n";
+
+  if(errors !== ""){
+    alert(errors);
+    return false;   // stop submission
+  }
+
+  alert("All data is valid");
+  return true;      // allow submission
+}
+</script>
+===
+<script>
+const square = n => n * n;
+
+let n = Number(prompt("Enter a number"));
+alert("Square = " + square(n));
+</script>
+===
+function fact(n){
+let f=1;
+for(let i=1;i<=n;i++) f*=i;
+return f;
+}
+console.log(fact(5));
